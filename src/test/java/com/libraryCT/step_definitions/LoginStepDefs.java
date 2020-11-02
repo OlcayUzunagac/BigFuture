@@ -17,9 +17,7 @@ public class LoginStepDefs extends BasePage {
     @Given("the user is on the login page")
     public void the_user_is_on_the_login_page() {
         String url = ConfigurationReader.get("url");
-        Driver.get().get(url);
-
-    }
+        Driver.get().get(url);  }
 
     @When("the user logs as a {string} with {string}")
     public void the_user_logs_as_a_with(String email , String password) {

@@ -32,7 +32,6 @@ public abstract class BasePage {
 
 
     public String getPageTitle() {
-       // BrowserUtils.waitForStaleElement(pageTitle);
         return pageTitle.getText();
     }
 
