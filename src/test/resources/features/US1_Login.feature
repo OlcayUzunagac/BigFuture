@@ -4,7 +4,7 @@ Feature: Users should be able to login
   Scenario Outline: Login as "<role>"
     Given the user is on the login page
     When the user logs as a "<role>" with "<password>"
-    Then the title should be "<page>"
+    Then the URL should contains "<page>"
 
     Examples:
       | role                | password | page      |

@@ -27,7 +27,7 @@ public class LoginStepDefs extends BasePage {
         loginPage.signIn.click();  }
 
 
-    @Then("the title should be {string}")
+    @Then("the URL should contains {string}")
     public void the_title_should_be(String page) {
         BrowserUtils.waitForVisibility(loginPage.pageTitle,10);
         String expectedUrl = "http://library2.cybertekschool.com/#" + page.toLowerCase();

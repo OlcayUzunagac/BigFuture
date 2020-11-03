@@ -18,7 +18,19 @@ public abstract class BasePage {
     }
 
     @FindBy(css = "li.nav-item")
-    public List<WebElement> menuOptions;
+    public List<WebElement> modules;
+
+    @FindBy(xpath = "//*[.='Books']")
+    public WebElement books;
+
+    @FindBy(xpath = "//span[.='Borrowing Books']")
+    public WebElement borrowingBooks;
+
+    @FindBy(xpath = "//span[.='Dashboard']")
+    public WebElement dashboard;
+
+    @FindBy(xpath = "//span[.='Users']")
+    public WebElement users;
 
     @FindBy(xpath = "//span[text()='Books']")
     public WebElement pageTitle;
