@@ -11,16 +11,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class BasePage {
+public abstract class BasePage {
 
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
     @FindBy(css = "li.nav-item")
-    public List<WebElement> menuOptions;
+    public List<WebElement> modules;
 
-    @FindBy(css = "span.title")
+    @FindBy(xpath = "//*[.='Books']")
+    public WebElement books;
+
+    @FindBy(xpath = "//span[.='Borrowing Books']")
+    public WebElement borrowingBooks;
+
+    @FindBy(xpath = "//span[.='Dashboard']")
+    public WebElement dashboard;
+
+    @FindBy(xpath = "//span[.='Users']")
+    public WebElement users;
+
+    @FindBy(xpath = "//span[text()='Books']")
     public WebElement pageTitle;
 
     @FindBy(linkText = "Log Out")
@@ -32,7 +44,6 @@ public class BasePage {
 
 
     public String getPageTitle() {
-        BrowserUtils.waitForStaleElement(pageTitle);
         return pageTitle.getText();
     }
 
