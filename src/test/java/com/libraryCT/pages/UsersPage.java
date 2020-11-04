@@ -31,4 +31,7 @@ public class UsersPage extends BasePage{
 
     @FindBy(xpath = "(//tbody//td)[4]")
     public WebElement lastAddedMail;
+
+    @FindBy(css = "div#add_user_modal h5")
+    public WebElement addUserFormHeader;
 }

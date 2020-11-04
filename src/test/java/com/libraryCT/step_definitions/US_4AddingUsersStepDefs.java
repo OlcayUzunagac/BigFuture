@@ -25,6 +25,8 @@ public class US_4AddingUsersStepDefs {
     @When("the user clicks Add User")
     public void the_user_clicks_Add_User() {
         usersPage.addUser.click();
+       BrowserUtils.waitForVisibility(usersPage.addUserFormHeader,3);
+        Assert.assertEquals("Add User", usersPage.addUserFormHeader.getText());
 
     }
 
@@ -44,7 +46,7 @@ public class US_4AddingUsersStepDefs {
           randomMail ="a"+random.nextInt(1000)+"@gmail.com";
           usersPage.email.sendKeys(randomMail);
           usersPage.saveChanges.click();
-          BrowserUtils.waitFor(2);
+          BrowserUtils.waitFor(1);
 
           //verify user adding
           String lastAddedMail = usersPage.lastAddedMail.getText();
