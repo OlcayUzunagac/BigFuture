@@ -2,7 +2,8 @@ Feature: As a student, i should able to search books with different categories
 
   Scenario: search books in different categories
     Given the user is on the login page
-    When The student should able to login
+    When the user enters the student information
+    Then the user is on "Library" page
     Then The user should able to search books with "Categories"
       | ALL                     |
       | Action and Adventure    |
