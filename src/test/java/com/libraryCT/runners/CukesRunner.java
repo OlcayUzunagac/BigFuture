@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
         plugin = {"json:target/cucumber.json", "html:target/default-html-reports"},
         features = "src/test/resources/features",
         glue = "com/libraryCT/step_definitions",
-        dryRun =false,
-        tags = "@login2"
+        dryRun =true,
+        tags = "@addUsers"
 )
 public class CukesRunner {
 }
