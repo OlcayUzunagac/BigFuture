@@ -5,15 +5,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
-    @FindBy(id = "inputEmail")
+    @FindBy(css = "#inputEmail")
     public WebElement emailAddress;
 
-    @FindBy(id = "inputPassword")
+    @FindBy(css = "#inputPassword")
     public WebElement password;
 
     @FindBy(tagName = "button")
-    public  WebElement signIn;
+    public WebElement signIn;
+
+    public void login(String userNameStr, String passwordStr) {
+        emailAddress.sendKeys(userNameStr);
+        password.sendKeys(passwordStr);
+        signIn.click();
+
+    }
 
 }
