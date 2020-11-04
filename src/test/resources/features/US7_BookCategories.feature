@@ -1,6 +1,6 @@
 Feature: As a student, i should able to search books with different categories
 
-  Scenario Outline: search books in different categories
+  Scenario: search books in different categories
     Given the user is on the login page
     When The student should able to login
     Then The user should able to search books with "Categories"
