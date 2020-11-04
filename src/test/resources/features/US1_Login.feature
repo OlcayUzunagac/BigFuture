@@ -1,14 +1,18 @@
-@login
+@login2
 Feature: Users should be able to login
+	Background:
+		Given the user is on the login page
 
-  Scenario Outline: Login as "<role>"
-    Given the user is on the login page
-    When the user logs as a "<role>" with "<password>"
-    Then the URL should contains "<page>"
+	Scenario: Login as a student
+		When the user enters the student information
+		Then the user is on "Library" page
 
-    Examples:
-      | role                | password | page      |
-      | student58@library   | o3imcY1J | Books     |
-      | student59@library   | MMxtSJFr | Books     |
-      | student60@library   | G7IFdJ11 | Books     |
-      | librarian50@library | kAbC7Ybl | Dashboard |
+
+	Scenario: Login as a librarian
+		When the user enters the librarian information
+		Then the user is on "Library" page
+
+
+
+		
+		
