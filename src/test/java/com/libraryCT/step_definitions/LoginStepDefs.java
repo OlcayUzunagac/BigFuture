@@ -47,10 +47,8 @@ public class LoginStepDefs {
 
         String username2 = ConfigurationReader.get("librarian_username");
         String password2 = ConfigurationReader.get("librarian_password");
-
         LoginPage loginPage = new LoginPage();
         loginPage.login(username2,password2);
-
     }
 
     @Then("the user is on {string} page")

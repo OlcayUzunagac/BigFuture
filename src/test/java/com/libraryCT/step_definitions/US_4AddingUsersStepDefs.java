@@ -7,8 +7,7 @@ public class US_4AddingUsersStepDefs {
 
     @When("the user clicks {string} and enters the page")
     public void the_user_clicks_and_enters_the_page(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
     @When("the user clicks Add User")
