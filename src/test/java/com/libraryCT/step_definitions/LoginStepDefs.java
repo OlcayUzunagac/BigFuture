@@ -13,8 +13,8 @@ public class LoginStepDefs {
 
     @Given("the user is on the login page")
     public void the_user_is_on_the_login_page() {
+        Driver.get().manage().window().maximize();
         String url = ConfigurationReader.get("url");
-
         Driver.get().get(url);
 
     }
@@ -22,6 +22,7 @@ public class LoginStepDefs {
 
     @When("the user enters the student information")
     public void the_user_enters_the_student_information() {
+
 
         String username = ConfigurationReader.get("student_username");
         String password = ConfigurationReader.get("student_password");
@@ -45,6 +46,7 @@ public class LoginStepDefs {
     @When("the user enters the librarian information")
     public void the_user_enters_the_librarian_information() {
 
+        Driver.get().get(ConfigurationReader.get("url"));
         String username2 = ConfigurationReader.get("librarian_username");
         String password2 = ConfigurationReader.get("librarian_password");
 
