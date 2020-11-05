@@ -37,7 +37,7 @@ public class US_4AddingUsersStepDefs {
     @When("the user fills out user information and creates a user")
     public void the_user_fills_out_user_information_and_creates_a_user() {
         Random random=new Random();
-        String randomMail ="a"+random.nextInt(1000)+"@gmail.com";
+        String randomMail ="NEW_USER"+random.nextInt(1000)+"@gmail.com";
 
       usersPage.fullName.sendKeys("John Doe");
       usersPage.password.sendKeys("123");
@@ -76,6 +76,56 @@ public class US_4AddingUsersStepDefs {
 
 
     }
+
+    @When("the user clicks edit user and edits the user info")
+    public void the_user_clicks_edit_user_and_edits_the_user_info() {
+    String xpathOfEdit="//a[@onclick='Users.edit_user("+usersPage.findFirstEditButton()+")']";
+    Driver.get().findElement(By.xpath(xpathOfEdit)).click();
+    BrowserUtils.waitFor(2);
+
+        usersPage.editUsersEmail.clear();
+
+        Random random=new Random();
+        String randomMail ="Edited_User"+random.nextInt(1000)+"@gmail.com";
+        usersPage.editUsersEmail.sendKeys(randomMail);
+    }
+
+
+
+    @Then("the user can {string} the edited user info")
+    public void the_user_can_the_edited_user_info(String action) {
+        if(action.equalsIgnoreCase("save")){
+            usersPage.saveChanges.click();
+            boolean flag=true;
+            try {
+                usersPage.pageTitle.click();
+                //if it is clickable that means Edituser form is closed
+            }
+            catch (Exception e){
+                flag=false;
+
+            }
+            BrowserUtils.waitFor(2);
+
+            Assert.assertTrue(flag);
+        }
+        else if(action.equalsIgnoreCase("close")){
+            usersPage.close.click();
+            boolean flag=true;
+            try {
+                usersPage.pageTitle.click();
+                //if it is clickable that means Add user form is closed
+            }
+            catch (Exception e){
+                flag=false;
+            }
+            BrowserUtils.waitFor(2);
+            Assert.assertTrue(flag);
+        }
+
+
+    }
+
 
 
 

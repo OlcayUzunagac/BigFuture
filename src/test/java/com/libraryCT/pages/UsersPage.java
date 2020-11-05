@@ -1,5 +1,7 @@
 package com.libraryCT.pages;
 
+import com.libraryCT.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -29,9 +31,21 @@ public class UsersPage extends BasePage{
     @FindBy(xpath = "//span[@id='email-error']")
     public WebElement mailErrorMessage;
 
+
     @FindBy(xpath = "(//tbody//td)[4]")
     public WebElement lastAddedMail;
 
     @FindBy(css = "div#add_user_modal h5")
     public WebElement addUserFormHeader;
+
+    @FindBy(xpath = "//input[@name='email']")
+    public WebElement editUsersEmail;
+
+
+
+    public String findFirstEditButton(){
+        String firstEditRowNum = Driver.get().findElement(By.xpath("(//tbody//td)[2]")).getText();
+        return firstEditRowNum;
+    }
+
 }
