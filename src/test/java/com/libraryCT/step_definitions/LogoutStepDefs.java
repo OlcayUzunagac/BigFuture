@@ -15,8 +15,8 @@ public class LogoutStepDefs {
 
     LoginPage loginPage = new LoginPage();
 
-    @Given("I am logged in as {string}")
-    public void i_am_logged_in_as(String userType) {
+    @Given("the user logged in as {string}")
+    public void the_user_logged_in_as(String userType) {
 
         String url = ConfigurationReader.get("url");
         String studentUsername = ConfigurationReader.get("student_username");
@@ -35,8 +35,8 @@ public class LogoutStepDefs {
         BrowserUtils.waitFor(2);
     }
 
-    @When("I click on log out button")
-    public void i_click_on_log_out_button() {
+    @When("the user click on log out button")
+    public void the_user_click_on_log_out_button() {
         loginPage.logOut();
     }
 
