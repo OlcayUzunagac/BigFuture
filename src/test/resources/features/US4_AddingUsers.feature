@@ -17,4 +17,4 @@ Feature: Librarian should be able to add users
     When the user clicks Users and enters the page
     And the user clicks Add User
     Then the user clicks Close and cancels the process
-#calismam lazim son assertion icin
+#calismam lazim son assertion icinf
