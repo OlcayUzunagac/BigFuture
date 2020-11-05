@@ -16,11 +16,14 @@ public class LoginPage extends BasePage {
     @FindBy(tagName = "button")
     public WebElement signIn;
 
+
+
     public void login(String userNameStr, String passwordStr) {
         emailAddress.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
         signIn.click();
 
     }
+
 
 }
