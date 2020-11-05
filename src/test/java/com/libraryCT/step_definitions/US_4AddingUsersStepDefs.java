@@ -3,9 +3,11 @@ package com.libraryCT.step_definitions;
 import com.libraryCT.pages.LoginPage;
 import com.libraryCT.pages.UsersPage;
 import com.libraryCT.utilities.BrowserUtils;
+import com.libraryCT.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 import java.util.Random;
 
@@ -54,10 +56,22 @@ public class US_4AddingUsersStepDefs {
 
       }
 
+    }
+    @Then("the user clicks Close and cancels the process")
+    public void the_user_clicks_Close_and_cancels_the_process() {
+        usersPage.close.isDisplayed();
+        System.out.println("önce");
 
+        Assert.assertTrue(Driver.get().findElement(By.xpath("(//section[@id='users']//div//a)[1]")).isEnabled());
+        System.out.println("sonra");
+        BrowserUtils.waitFor(2);
+        usersPage.close.click();
 
+        Driver.get().findElement(By.xpath("(//section[@id='users']//div//a)[1]")).isEnabled();
 
     }
+
+
 
 
 
