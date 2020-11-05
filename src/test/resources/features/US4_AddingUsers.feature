@@ -17,4 +17,10 @@ Feature: Librarian should be able to add users
     When the user clicks Users and enters the page
     And the user clicks Add User
     Then the user clicks Close and cancels the process
-#calismam lazim son assertion icinf
+
+  Scenario: Librarian should be able to edit user
+    Given the user is on the login page
+    And the user enters the librarian information
+    And the user is on "Library" page
+    And the user clicks Users and enters the page
+    And the user clicks edit user and edits the user info
