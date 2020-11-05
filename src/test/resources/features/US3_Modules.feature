@@ -1,3 +1,4 @@
+@modules
 Feature: User should see modules
 
   Background:
@@ -11,4 +12,14 @@ Feature: User should see modules
     Then Student should see following modules
       | Books           |
       | Borrowing Books |
+
+  @librarianModules
+  Scenario: Librarian should see 3 modules
+    Given the user enters the librarian information
+    And the user is on "Library" page
+    When the user should be able to login
+    Then Librarian should see following modules
+      | Dashboard |
+      | Users     |
+      | Books     |
 
