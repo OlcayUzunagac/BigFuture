@@ -20,12 +20,7 @@ public class LoginStepDefs {
         LoginPage loginPage = new LoginPage();
         loginPage.login(username,password);
     }
-    @Then("the user should be able to login")
-    public void the_user_should_be_able_to_login() {
-        BrowserUtils.waitFor(3);
-        String actualTitle = Driver.get().getTitle();
-        Assert.assertEquals("Library",actualTitle);
-    }
+
     @When("the user enters the librarian information")
     public void the_user_enters_the_librarian_information() {
         String username2 = ConfigurationReader.get("librarian_username");
@@ -33,10 +28,28 @@ public class LoginStepDefs {
         LoginPage loginPage = new LoginPage();
         loginPage.login(username2,password2);
     }
+
+
+    @When("the user enters an invalid information")
+    public void the_user_enters_an_invalid_information() {
+      String invalidUsername = ConfigurationReader.get("invalid_username");
+      String invalidPassword = ConfigurationReader.get("invalid_password");
+      LoginPage loginPage = new LoginPage();
+      loginPage.login(invalidUsername,invalidPassword);
+    }
+
     @Then("the user is on {string} page")
     public void the_user_is_on_page(String string) {
         BrowserUtils.waitFor(3);
         String actualTitle = Driver.get().getTitle();
-        Assert.assertEquals("Library",actualTitle);
+        Assert.assertEquals(string,actualTitle);
     }
+
+    @Then("the user is {string} page")
+    public void the_user_is_page(String string) {
+        BrowserUtils.waitFor(3);
+        String actualTitle = Driver.get().getTitle();
+        Assert.assertEquals(string,actualTitle);
+    }
+
 }
