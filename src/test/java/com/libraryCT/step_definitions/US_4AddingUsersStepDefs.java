@@ -59,23 +59,7 @@ public class US_4AddingUsersStepDefs {
       }
 
     }
-    @Then("the user clicks Close and cancels the process")
-    public void the_user_clicks_Close_and_cancels_the_process() {
-        usersPage.close.click();
-        boolean flag=true;
-       try {
-           usersPage.pageTitle.click();
-        //if it is clickable that means Add user form is closed
-       }
-       catch (Exception e){
-           flag=false;
-       }
 
-        Assert.assertTrue(flag);
-
-
-
-    }
 
     @When("the user clicks edit user and edits the user info")
     public void the_user_clicks_edit_user_and_edits_the_user_info() {
@@ -126,10 +110,53 @@ public class US_4AddingUsersStepDefs {
 
     }
 
+    @Then("the user fills out user information and clicks {string}")
+    public void the_user_fills_out_user_information_and_clicks(String action) {
+
+        Random random = new Random();
+        String randomMail = "NEW_USER" + random.nextInt(1000) + "@gmail.com";
+
+        usersPage.fullName.sendKeys("John Doe");
+        usersPage.password.sendKeys("123");
+        usersPage.email.sendKeys(randomMail);
+        if(action.equalsIgnoreCase("save")) {
+            usersPage.saveChanges.click();
+            //if somehow same email is entered, a new randommail will be generated
+            while (usersPage.fullName.isDisplayed()) {
+                usersPage.email.clear();
+                randomMail = "a" + random.nextInt(1000) + "@gmail.com";
+                usersPage.email.sendKeys(randomMail);
+                usersPage.saveChanges.click();
+                BrowserUtils.waitFor(1);
+
+                //verify user adding
+                String lastAddedMail = usersPage.lastAddedMail.getText();
+                Assert.assertEquals(randomMail, lastAddedMail);
+            }
+        }
+
+        else if(action.equalsIgnoreCase("close")){
+            BrowserUtils.waitFor(1);
+            usersPage.close.click();
+            boolean flag=true;
+            try {
+                usersPage.pageTitle.click();
+                //if it is clickable that means Add user form is closed
+            }
+            catch (Exception e){
+                flag=false;
+            }
+            BrowserUtils.waitFor(2);
+            Assert.assertTrue(flag);
+        }
+
+        }
+
+
+    }
 
 
 
 
 
 
-}
