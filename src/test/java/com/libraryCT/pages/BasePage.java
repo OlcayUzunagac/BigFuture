@@ -41,6 +41,9 @@ public abstract class BasePage {
     @FindBy(css = "#navbarDropdown > span")
     public WebElement userName;
 
+    @FindBy(id = "book_categories")
+    public List<WebElement> bookCategories;
+
     public String getPageTitle() {
         return pageTitle.getText();
     }
